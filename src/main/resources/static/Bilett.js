@@ -19,7 +19,7 @@ document.getElementById('billett-form').addEventListener('submit', function (eve
     };
 
     lagreBillett(billett);
-    visBillett(billett);
+    oppdaterBillettListe();
 
     document.getElementById('navn').value = '';
     document.getElementById('telefon').value = '';
@@ -28,24 +28,36 @@ document.getElementById('billett-form').addEventListener('submit', function (eve
 });
 
 document.getElementById('slett-alle-billetter').addEventListener('click', function () {
-    const billettListe = document.getElementById('billett-liste');
-    while (billettListe.firstChild) {
-        billettListe.removeChild(billettListe.firstChild);
-    }
+    localStorage.removeItem('billetter');
+    oppdaterBillettListe();
 });
 
 function lagreBillett(billett) {
-    const billetter = JSON.parse(localStorage.getItem('billetter')) || [];
+    let billetter = hentBilletter();
     billetter.push(billett);
-    localStorage.setItem('billetter', JSON.stringify(billetter));
+    lagreBilletter(billetter);
 }
 
-function visBillett(billett) {
+function hentBilletter() {
+    const billetterJson = localStorage.getItem('billetter');
+    return billetterJson ? JSON.parse(billetterJson) : [];
+}
+
+function lagreBilletter(billetter) {
+    const billetterJson = JSON.stringify(billetter);
+    localStorage.setItem('billetter', billetterJson);
+}
+
+function oppdaterBillettListe() {
     const billettListe = document.getElementById('billett-liste');
-    const listeElement = document.createElement('li');
-    listeElement.textContent = `Navn: ${billett.navn}, Telefon: ${billett.telefon}, E-post: ${billett.epost}, Antall: ${billett.antall}`;
-    billettListe.appendChild(listeElement);
+    billettListe.innerHTML = '';
+
+    const billetter = hentBilletter();
+    billetter.forEach(function (billett) {
+        const listeElement = document.createElement('li');
+        listeElement.textContent = `${billett.navn} (${billett.antall} billetter)`;
+        billettListe.appendChild(listeElement);
+    });
 }
 
-const billetter = JSON.parse(localStorage.getItem('billetter')) || [];
-billetter.forEach(visBillett);
+oppdaterBillettListe();

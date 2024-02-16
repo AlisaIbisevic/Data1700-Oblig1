@@ -5,6 +5,7 @@ document.getElementById('billett-form').addEventListener('submit', function (eve
     const telefon = document.getElementById('telefon').value;
     const epost = document.getElementById('epost').value;
     const antall = document.getElementById('antall').value;
+    const submit = document.getElementById('submit').value;
 
     submit.addEventListener("click", function () {
 

@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Kinobilletter</title>
-    <script src="Bilett.js" defer></script>
+    <script src="bilett.js" defer></script>
 </head>
 <body>
 <h1>Kinobilletter</h1>
 <form id="billett-form">
     <label for="navn">Navn:</label>
     <input type="text" id="navn" required>
+    <span id="navn-error" class="error-message"></span>
     <br>
     <label for="telefon">Telefon:</label>
     <input type="text" id="telefon" required>
+    <span id="telefon-error" class="error-message"></span>
     <br>
     <label for="epost">E-post:</label>
     <input type="email" id="epost" required>
+    <span id="epost-error" class="error-message"></span>
     <br>
     <label for="antall">Antall billetter:</label>
     <input type="number" id="antall" min="1" required>
+    <span id="antall-error" class="error-message"></span>
     <br>
     <button type="submit">Kjøp billett</button>
 </form>
@@ -27,7 +31,4 @@
 </ul>
 <button id="slett-alle-billetter">Slett alle billettene</button>
 </body>
-<style>
-
-</style>
 </html>

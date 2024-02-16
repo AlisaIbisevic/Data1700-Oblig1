@@ -43,7 +43,7 @@ function lagreBillett(billett) {
 function visBillett(billett) {
     const billettListe = document.getElementById('billett-liste');
     const listeElement = document.createElement('li');
-    listeElement.textContent = Navn: ${billett.navn}, Telefon: ${billett.telefon}, E-post: ${billett.epost}, Antall: ${billett.antall};
+    listeElement.textContent = `Navn: ${billett.navn}, Telefon: ${billett.telefon}, E-post: ${billett.epost}, Antall: ${billett.antall}`;
     billettListe.appendChild(listeElement);
 }
 

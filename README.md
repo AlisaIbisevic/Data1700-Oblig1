@@ -1,7 +1,14 @@
 # Data1700-Oblig1
 
-# Kinobilletter
+Oslomet brukernavn: alibi8642
 
-Dette er et prosjekt for å registrere kjøp av kinobilletter. Prosjektet inneholder en HTML-fil, en JavaScript-fil og en README.md-fil.
+Oslomet studentnr: 385401
 
-## Oblig1: Bestilling av kino
+Github brukernavn: AlisaIbisevic
+
+Github repo URL: https://github.com/AlisaIbisevic/Data1700-Oblig1
+
+Fult navn: Alisa Ibisevic
+
+Forklaring av program: Dette er et prosjekt for å registrere kjøp av kinobilletter. 
+Prosjektet inneholder en HTML-fil, en JavaScript-fil og en README.md-fil.

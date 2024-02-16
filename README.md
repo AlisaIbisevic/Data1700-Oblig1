@@ -4,4 +4,4 @@
 
 Dette er et prosjekt for å registrere kjøp av kinobilletter. Prosjektet inneholder en HTML-fil, en JavaScript-fil og en README.md-fil.
 
-## Oblig1: Bestilling av kin
+## Oblig1: Bestilling av kino

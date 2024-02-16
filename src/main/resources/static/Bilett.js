@@ -1,63 +1,58 @@
-document.getElementById('billett-form').addEventListener('submit', function (event) {
-    event.preventDefault();
 
+    function lagreBillett(billett) {
+    const billetter = JSON.parse(localStorage.getItem('billetter')) || [];
+    billetter.push(billett);
+    localStorage.setItem('billetter', JSON.stringify(billetter));
+}
+
+    function visBillett(billett) {
+    const billettListe = document.getElementById('billett-liste');
+    const listeElement = document.createElement('li');
+    listeElement.textContent = `Navn: ${billett.navn}, Telefon: ${billett.telefon}, E-post: ${billett.epost}, Antall: ${billett.antall}`;
+    billettListe.appendChild(listeElement);
+}
+
+    function sjekkFelter() {
     const navn = document.getElementById('navn').value;
     const telefon = document.getElementById('telefon').value;
     const epost = document.getElementById('epost').value;
     const antall = document.getElementById('antall').value;
 
     if (!navn || !telefon || !epost || !antall) {
-        alert('Alle felt må fylles ut');
-        return;
-    }
+    alert('Alle felt må fylles ut');
+    return false;
+}
+    return true;
+}
 
+    document.getElementById('billett-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (sjekkFelter()) {
     const billett = {
-        navn: navn,
-        telefon: telefon,
-        epost: epost,
-        antall: antall
-    };
+    navn: document.getElementById('navn').value,
+    telefon: document.getElementById('telefon').value,
+    epost: document.getElementById('epost').value,
+    antall: document.getElementById('antall').value
+};
 
     lagreBillett(billett);
-    oppdaterBillettListe();
+    visBillett(billett);
 
     document.getElementById('navn').value = '';
     document.getElementById('telefon').value = '';
     document.getElementById('epost').value = '';
     document.getElementById('antall').value = '';
+}
 });
 
-document.getElementById('slett-alle-billetter').addEventListener('click', function () {
-    localStorage.removeItem('billetter');
-    oppdaterBillettListe();
-});
-
-function lagreBillett(billett) {
-    let billetter = hentBilletter();
-    billetter.push(billett);
-    lagreBilletter(billetter);
-}
-
-function hentBilletter() {
-    const billetterJson = localStorage.getItem('billetter');
-    return billetterJson ? JSON.parse(billetterJson) : [];
-}
-
-function lagreBilletter(billetter) {
-    const billetterJson = JSON.stringify(billetter);
-    localStorage.setItem('billetter', billetterJson);
-}
-
-function oppdaterBillettListe() {
+    document.getElementById('slett-alle-billetter').addEventListener('click', function () {
     const billettListe = document.getElementById('billett-liste');
-    billettListe.innerHTML = '';
-
-    const billetter = hentBilletter();
-    billetter.forEach(function (billett) {
-        const listeElement = document.createElement('li');
-        listeElement.textContent = `${billett.navn} (${billett.antall} billetter)`;
-        billettListe.appendChild(listeElement);
-    });
+    while (billettListe.firstChild) {
+    billettListe.removeChild(billettListe.firstChild);
 }
+});
 
-oppdaterBillettListe();
+    const billetter = JSON.parse(localStorage.getItem('billetter')) || [];
+    billetter.forEach(visBillett);
+

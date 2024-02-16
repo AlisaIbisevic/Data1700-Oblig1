@@ -50,7 +50,6 @@ function visBillett(billett) {
 const billetter = JSON.parse(localStorage.getItem('billetter')) || [];
 billetter.forEach(visBillett);
 
-function sjekkFelter() {
     function sjekkFelter() {
         const navn = document.getElementById('navn').value;
         const telefon = document.getElementById('telefon').value;
@@ -100,4 +99,3 @@ function sjekkFelter() {
 
         return true;
     }
-}

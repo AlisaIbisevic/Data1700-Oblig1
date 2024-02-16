@@ -4,9 +4,9 @@ Oslomet brukernavn: alibi8642
 
 Oslomet studentnr: 385401
 
-Github brukernavn: AlisaIbisevic
+GitHub brukernavn: AlisaIbisevic
 
-Github repo URL: https://github.com/AlisaIbisevic/Data1700-Oblig1
+GitHub repo URL: https://github.com/AlisaIbisevic/Data1700-Oblig1
 
 Fult navn: Alisa Ibisevic
 

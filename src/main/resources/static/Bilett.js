@@ -7,6 +7,7 @@ document.getElementById('billett-form').addEventListener('submit', function (eve
     const antall = document.getElementById('antall').value;
 
     const telefonRegex = /^\d{8}$/;
+    const epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const navnError = document.getElementById('navn-error');
     const telefonError = document.getElementById('telefon-error');
@@ -35,6 +36,9 @@ document.getElementById('billett-form').addEventListener('submit', function (eve
 
     if (!epost) {
         epostError.textContent = 'Vennligst skriv inn e-post';
+        valid = false;
+    } else if (!epostRegex.test(epost)) {
+        epostError.textContent = 'Ugyldig e-post';
         valid = false;
     }
 
